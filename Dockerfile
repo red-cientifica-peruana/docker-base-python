@@ -1,12 +1,17 @@
 FROM centos:7
 MAINTAINER devteam@rcp.pe
 ENV PYTHONUNBUFFERED 1
-RUN yum -y update && yum clean all
-RUN yum -y install epel-release && yum clean all
-RUN yum -y install postgresql-devel && yum clean all
-RUN yum -y install python-devel python-setuptools python-pip python-lxml && yum clean all
-RUN yum -y install mysql-devel && yum clean all
-RUN pip install --upgrade pip
-RUN yum -y install gcc gcc-c++ && yum clean all
-RUN yum -y reinstall glibc-common  && yum clean all
+
+# Install Python and tools
+RUN yum -y update && yum clean all \
+	&& yum -y install epel-release && yum clean all \
+	&& yum -y install postgresql-devel && yum clean all \
+	&& yum -y install python-devel python-setuptools python-pip python-lxml && yum clean all \
+	&& yum -y install mysql-devel && yum clean all \
+	&& pip install --upgrade pip \
+	&& yum -y install gcc gcc-c++ \
+	&& yum clean all \
+	&& yum -y reinstall glibc-common  \
+	&& yum clean all 
+
 ENV TZ America/Lima
