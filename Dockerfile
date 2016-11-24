@@ -1,5 +1,5 @@
 FROM centos:7
-MAINTAINER devteam@rcp.pe
+MAINTAINER devteam-general@rcp.pe
 ENV PYTHONUNBUFFERED 1
 
 # Install Python and tools
